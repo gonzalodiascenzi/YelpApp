@@ -6,12 +6,12 @@ Para ello utilizaremos de la API YELP: https://www.yelp.com/developers/v3/manage
 
 Integrantes:
 
-Boris Soto: 36 años. Ingeniero de Sistemas, Desarrollador Mobile y Fullstack.
+Boris Soto: Ingeniero de Sistemas, Desarrollador Mobile y Fullstack.
 
 Arturo Wilson: Mobile Developer Mobile Freelancer 
 
-Julian Ybarra: 26 años, Desarollador Mobile Android.
+Julian Ybarra: Desarollador Mobile Android.
 
 Simon:
 
-Gonzalo Di Ascenzi: 22 años. Estudiante de Ingenieria Informatica, Desarrollador Mobile Android Trainee en Globant.
+Gonzalo Di Ascenzi: Estudiante de Ingenieria Informatica, Desarrollador Mobile Android Trainee en Globant.
