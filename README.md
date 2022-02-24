@@ -14,4 +14,4 @@ Julian Ybarra: 26 años, Desarollador Mobile Android.
 
 Simon:
 
-Gonzalo Di Ascenzi: 22 años. Estudiante de Ingenieria Informatica, Desarrollador Mobile Android, Trainee en Globant.
+Gonzalo Di Ascenzi: 22 años. Estudiante de Ingenieria Informatica, Desarrollador Mobile Android Trainee en Globant.
