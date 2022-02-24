@@ -2,7 +2,7 @@
 
 El objetivo de la aplicacion sera ver un listado de comercios y navegar a su detalle al hacer click sobre una de ellas. Conectarse a una API para recuperar este listado. Permitir marcar comercios como favoritos y guardarlos en una base de datos. Los comercios seran mostrados en base a la geolocalizacion del dispositivo.
 
-Para ello utilizaremos de la API YARP: https://www.yelp.com/developers/v3/manage_app
+Para ello utilizaremos de la API YELP: https://www.yelp.com/developers/v3/manage_app
 
 Integrantes:
 
