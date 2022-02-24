@@ -14,4 +14,4 @@ Julian Ybarra: Desarollador Mobile Android.
 
 Simon:
 
-Gonzalo Di Ascenzi: Estudiante de Ingenieria Informatica, Desarrollador Mobile Android Trainee en Globant.
+Gonzalo Di Ascenzi: Estudiante de Ingenieria Informatica, Mobile Developer Android Trainee en Globant.
