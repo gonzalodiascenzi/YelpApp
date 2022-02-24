@@ -8,7 +8,7 @@ Integrantes:
 
 Boris Soto: 36 años. Ingeniero de Sistemas, Desarrollador Mobile y Fullstack.
 
-Arturo:
+Arturo Wilson: Mobile Developer Mobile Freelancer 
 
 Julian Ybarra: 26 años, Desarollador Mobile Android.
 
