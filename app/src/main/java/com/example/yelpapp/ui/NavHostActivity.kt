@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.yelpapp.R
 
-
 class NavHostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
