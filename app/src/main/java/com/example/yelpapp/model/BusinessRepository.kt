@@ -28,5 +28,4 @@ class BusinessRepository(app : Application) {
         val success = coarsePermissionChecker.check()
         return if (success) locationDataSource.findLastLocation() else null
     }
-
 }
