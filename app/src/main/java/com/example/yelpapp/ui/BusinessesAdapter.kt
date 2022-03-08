@@ -1,20 +1,18 @@
 package com.example.yelpapp.ui
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.ViewBusinessItemBinding
 import com.example.yelpapp.model.Businesses
 import com.example.yelpapp.ui.common.basicDiffUtil
 import com.example.yelpapp.ui.common.inflate
+import com.example.yelpapp.ui.common.loadUrl
 
 class BusinessesAdapter (
-    private val listener: (Businesses) -> Unit
-        )
+    private val listener: (Businesses) -> Unit)
     : ListAdapter<Businesses, BusinessesAdapter.ViewHolder>(basicDiffUtil { old, new -> old.id == new.id }) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,7 +30,8 @@ class BusinessesAdapter (
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ViewBusinessItemBinding.bind(view)
         fun bind(businesses: Businesses) {
-            //binding.variableEnXML = businesses
+            binding.cover.loadUrl(businesses.imageUrl)
+            binding.title.text = businesses.title
         }
     }
 }
