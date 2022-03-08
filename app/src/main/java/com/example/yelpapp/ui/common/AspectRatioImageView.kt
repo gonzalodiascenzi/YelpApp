@@ -1,4 +1,4 @@
-package com.marbleinteractive.mymovies.ui
+package com.example.yelpapp.ui.common
 
 import android.content.Context
 import android.util.AttributeSet
