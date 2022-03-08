@@ -5,6 +5,7 @@ data class Businesses(
     val name: String,
     val alias: String,
     val title: String,
-    val id: Long
+    val id: Long,
+    val imageUrl: String
 )
 
