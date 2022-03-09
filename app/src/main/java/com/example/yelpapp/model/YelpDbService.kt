@@ -10,7 +10,6 @@ interface YelpDbService {
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double
     ): YelpSearchResult
-
 }
 
 
