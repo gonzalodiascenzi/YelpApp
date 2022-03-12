@@ -1,86 +1,89 @@
 package com.example.yelpapp.ui
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.lifecycleScope
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.ActivityMainBinding
+import com.example.yelpapp.model.Business
 import com.example.yelpapp.model.Businesses
 import com.example.yelpapp.model.YelpDbClient
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
+import java.nio.DoubleBuffer
+import kotlin.concurrent.thread
 import kotlin.coroutines.resume
 
 class MainActivity : AppCompatActivity() {
 
-    private val requestPermissionLauncher: ActivityResultLauncher<String> =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            lifecycleScope.launch {
-                val location = getLocation(isGranted)
-//                val movies = RemoteConnection.service.listPopularMovies(
-//                    getString(R.string.api_key),
-//                    getRegionFromLocation(location)
-//                )
-//                adapter.movies = movies.results
-            }
-        }
+    companion object{
+        private const val DEFAULT_LONGITUDE = -34.61315
+        private const val DEFAULT_LATITUDE = -58.37723
+    }
+
+    data class LatLong(var lat: Double = DEFAULT_LATITUDE, var long: Double = DEFAULT_LONGITUDE)
+
+    private val businessAdapter = BusinessesAdapter{
+        Toast.makeText(this,it.name, Toast.LENGTH_LONG).show()
+    }
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
-    private val adapter = BusinessesAdapter{
-        val intent = Intent(this, DetailActivity::class.java)
-        startActivity(intent)
-    }
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            requestLocalBusiness(isGranted)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.recycler.adapter = adapter
-    }
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-    private suspend fun getLocation(granted: Boolean): Location? {
-        return if (granted) findLastLocation() else null
+        binding.recycler.adapter = businessAdapter
+
+        requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+
     }
 
     @SuppressLint("MissingPermission")
-    private suspend fun findLastLocation(): Location? =
-        suspendCancellableCoroutine { continuation ->
-            fusedLocationClient.lastLocation
-                .addOnCompleteListener {
-                    continuation.resume(it.result)
-                }
+    private fun requestLocalBusiness(isLocationGranted: Boolean) {
+        if (isLocationGranted) {
+            fusedLocationClient.lastLocation.addOnCompleteListener {
+                doRequestLocalBusiness(getLatlong(it.result))
+            }
+        } else {
+            doRequestLocalBusiness(LatLong())
         }
 
-    companion object{
-        private const val DEFAULT_REGION = "US"
     }
 
-    private fun getRegionFromLocation(location: Location?): String {
-        if (location==null) return DEFAULT_REGION
-        val geocoder = Geocoder(this)
-        val result = geocoder.getFromLocation(
-            location.latitude,
-            location.longitude,
-            1
-        )
-        return result.firstOrNull()?.countryCode ?: DEFAULT_REGION
-    }
-
-    private fun doRequestPopularMovies(region: String) {
-        lifecycleScope.launch { //UTILIZAMOS RETROFIT CON CORRUTINAS PARA RECUPERAR LOS DATOS DE LA API
+    private fun doRequestLocalBusiness(latlong: MainActivity.LatLong) {
+        lifecycleScope.launch {
             val apiKey = getString(R.string.api_key)
-//            val popularMovies = YelpDbClient.service.listPopularMovies(apiKey, region)
-//            adapter.movies = popularMovies.results
-            adapter.notifyDataSetChanged()
+            val locationBusiness =
+                YelpDbClient.service.getYelpSearch(apiKey, "", latlong.lat, latlong.long)
+            businessAdapter.submitList(locationBusiness.businesses)
+            businessAdapter.notifyDataSetChanged()
         }
+
     }
+
+    private fun getLatlong(location: Location?): LatLong {
+        if (location == null) return LatLong()
+        return LatLong(location.latitude, location.longitude)
+    }
+
 }
