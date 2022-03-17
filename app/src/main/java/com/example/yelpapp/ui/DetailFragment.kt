@@ -13,6 +13,5 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentDetailBinding.bind(view)
 
-
     }
 }
