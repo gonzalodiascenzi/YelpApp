@@ -12,6 +12,5 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentMainBinding.bind(view).apply {
         }
-
     }
 }
