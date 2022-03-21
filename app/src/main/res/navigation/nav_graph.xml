@@ -6,7 +6,7 @@
     app:startDestination="@id/main_dest">
     <fragment
         android:id="@+id/main_dest"
-        android:name="com.example.yelpapp.ui.MainFragment"
+        android:name="com.example.yelpapp.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/detail_dest"
-        android:name="com.example.yelpapp.ui.DetailFragment"
+        android:name="com.example.yelpapp.ui.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
 </navigation>
