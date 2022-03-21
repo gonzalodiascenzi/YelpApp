@@ -1,14 +1,11 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.model.datasource
 
 
-import retrofit2.Call
+import com.example.yelpapp.model.YelpSearchResult
 import retrofit2.http.GET
 import retrofit2.http.Query
-import java.util.concurrent.Flow
 
-interface YelpDbService {
-
-
+interface YelpRemoteService {
 
         @GET("/v3/businesses/search")
         fun getYelpSearch(
