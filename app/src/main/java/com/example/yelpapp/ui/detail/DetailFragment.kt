@@ -1,4 +1,4 @@
-package com.example.yelpapp.ui
+package com.example.yelpapp.ui.detail
 
 import android.os.Bundle
 import android.view.View
