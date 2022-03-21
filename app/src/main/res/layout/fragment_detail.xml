@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".ui.DetailFragment">
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_height="wrap_content"
@@ -82,8 +81,5 @@
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|end"
         app:fabSize="mini"/>
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
