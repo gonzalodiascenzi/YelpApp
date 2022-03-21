@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.FragmentMainBinding
-import com.example.yelpapp.model.YelpDbClient
+import com.example.yelpapp.model.datasource.YelpDbClient
 import kotlinx.coroutines.launch
 
 class MainFragment : Fragment(R.layout.fragment_main) {
