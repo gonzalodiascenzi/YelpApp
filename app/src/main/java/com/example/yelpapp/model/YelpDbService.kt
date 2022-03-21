@@ -5,10 +5,10 @@ import retrofit2.http.Query
 
 interface YelpDbService {
 
-    @GET("/v3/businesses/search")
-    fun getYelpSearch(
-        @Query("latitude") latitude: Double,
-        @Query("longitude") longitude: Double
+    @GET("businesses/search")
+    suspend fun searchBusinesses(
+        @Query("latitude") latitude: String,
+        @Query("longitude") longitude: String
     ): YelpSearchResult
 }
 
