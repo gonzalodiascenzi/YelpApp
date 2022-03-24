@@ -13,6 +13,7 @@ import com.example.yelpapp.databinding.FragmentMainBinding
 import com.example.yelpapp.model.Business
 import com.example.yelpapp.model.BusinessRepository
 import com.example.yelpapp.ui.common.PermissionRequester
+import com.example.yelpapp.ui.common.launchAndCollect
 import kotlinx.coroutines.launch
 
 class MainFragment : Fragment(R.layout.fragment_main) {
@@ -32,15 +33,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentMainBinding.bind(view).apply {
+        val binding = FragmentMainBinding.bind(view).apply {
             recycler.adapter = adapter
         }
 
-        viewModel.state.observe(viewLifecycleOwner, ::updateUI)
+        viewLifecycleOwner.launchAndCollect(viewModel.state) {binding.updateUI(it)}
     }
 
-    private fun updateUI(state: MainViewModel.UiState) {
-        binding.progress.isVisible = state.loading
+    private fun FragmentMainBinding.updateUI(state: MainViewModel.UiState) {
+        progress.isVisible = state.loading
         state.businesses?.let(adapter::submitList)
         state.navigateTo?.let(::navigateTo)
 
@@ -52,6 +53,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun navigateTo(business: Business) {
         val action = MainFragmentDirections.actionMainToDetail()
         findNavController().navigate(action)
+        viewModel.onNavigationDone()
     }
 
     private fun requestLocationPermission() {
