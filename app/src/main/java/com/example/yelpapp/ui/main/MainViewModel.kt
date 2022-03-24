@@ -43,7 +43,6 @@ class MainViewModel(
 
     fun onLocationPermissionChecked() {
         _state.value = _state.value.copy(requestLocationPermission = false)
-        onUiReady()
     }
 }
 
