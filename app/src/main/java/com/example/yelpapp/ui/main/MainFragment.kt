@@ -18,48 +18,32 @@ import kotlinx.coroutines.launch
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private lateinit var binding : FragmentMainBinding
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory(BusinessRepository(requireActivity().application)) }
 
-    private val adapter = BusinessesAdapter(){
-        viewModel.onBusinessClicked(it)
-    }
+    private val adapter = BusinessesAdapter { mainState.onBusinessClicked(it)}
 
-    private val coarsePermissionRequester = PermissionRequester(
-        this,
-        Manifest.permission.ACCESS_COARSE_LOCATION
-    )
+    private lateinit var mainState: MainState
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mainState = buildMainState()
 
         val binding = FragmentMainBinding.bind(view).apply {
             recycler.adapter = adapter
         }
 
         viewLifecycleOwner.launchAndCollect(viewModel.state) {binding.updateUI(it)}
+
+        mainState.requestLocationPermission { viewModel.onUiReady() }
+
     }
 
     private fun FragmentMainBinding.updateUI(state: MainViewModel.UiState) {
         progress.isVisible = state.loading
         state.businesses?.let(adapter::submitList)
-        state.navigateTo?.let(::navigateTo)
 
-        if (state.requestLocationPermission) {
-            requestLocationPermission()
-        }
     }
 
-    private fun navigateTo(business: Business) {
-        val action = MainFragmentDirections.actionMainToDetail()
-        findNavController().navigate(action)
-        viewModel.onNavigationDone()
-    }
 
-    private fun requestLocationPermission() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            coarsePermissionRequester.request()
-            viewModel.onLocationPermissionChecked()
-        }
-    }
 }
