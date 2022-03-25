@@ -4,7 +4,6 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.yelpapp.model.Category
-import com.example.yelpapp.model.Coordinates
 
 @Entity
 data class Business(
@@ -26,8 +25,7 @@ data class Business(
     val price: String,
     val rating: Double,
     val review_count: Int,
-//    @Embedded
-//    val transactions: List<String>?,
+    val transactions: List<String>?,
     val url: String
 )
 

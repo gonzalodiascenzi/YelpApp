@@ -14,7 +14,7 @@ class App: Application() {
 
         db = Room.databaseBuilder(
             this,
-            YelpDataBase::class.java, "business-db"
+            YelpDataBase::class.java, "yelp-db"
         ).build()
     }
 }

@@ -1,11 +1,6 @@
 package com.example.yelpapp.model.database
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-//@Entity
 data class Location(
-//    @PrimaryKey
     val address1: String?,
     val address2: String?,
     val address3: String?,
