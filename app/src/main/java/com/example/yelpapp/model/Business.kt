@@ -1,5 +1,7 @@
 package com.example.yelpapp.model
 
+import com.example.yelpapp.domain.Business as DomainModel
+
 data class Business(
     val alias: String,
     val categories: List<Category>,
@@ -18,3 +20,5 @@ data class Business(
     val transactions: List<String>,
     val url: String
 )
+
+fun Business.toDomainModel() : DomainModel = DomainModel(alias,display_phone,distance,id,image_url,is_closed,location.address1,name,phone,price,rating,review_count,transactions,url)

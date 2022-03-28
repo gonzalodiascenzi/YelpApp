@@ -2,6 +2,8 @@ package com.example.yelpapp.ui.detail
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.text.bold
+import androidx.core.text.buildSpannedString
 import androidx.fragment.app.Fragment
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.FragmentDetailBinding
@@ -11,7 +13,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentDetailBinding.bind(view)
-
         binding.toolbar.setNavigationOnClickListener{ requireActivity().onBackPressed()}
     }
 }
