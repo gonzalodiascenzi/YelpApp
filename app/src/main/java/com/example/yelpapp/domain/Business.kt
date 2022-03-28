@@ -12,6 +12,7 @@ data class Business(
     val image_url: String,
     val is_closed: Boolean,
     val address: String,
+    val city : String,
     val name: String,
     val phone: String,
     val price: String,

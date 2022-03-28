@@ -1,7 +1,7 @@
 package com.example.yelpapp.ui.main
 
 import androidx.lifecycle.*
-import com.example.yelpapp.model.Business
+import com.example.yelpapp.domain.Business
 import com.example.yelpapp.model.BusinessRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +18,7 @@ class MainViewModel(
     fun onUiReady(){
         viewModelScope.launch {
             _state.value = UiState(loading = true)
-            _state.value = UiState(loading = false,businesses = businessRepository.searchBusiness().businesses)
+            _state.value = UiState(loading = false,businesses = businessRepository.searchBusiness())
         }
     }
 
