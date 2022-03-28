@@ -10,4 +10,3 @@ data class Location(
     val state: String,
     val zip_code: String
 )
-

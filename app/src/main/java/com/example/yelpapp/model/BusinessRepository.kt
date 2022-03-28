@@ -3,6 +3,7 @@ package com.example.yelpapp.model
 import android.Manifest
 import android.app.Application
 import android.location.Location
+import com.example.yelpapp.domain.Business
 
 class BusinessRepository(app : Application) {
 
@@ -16,12 +17,12 @@ class BusinessRepository(app : Application) {
         Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
-    suspend fun searchBusiness() : YelpSearchResult {
+    suspend fun searchBusiness() : List<Business> {
         val location = findLastLocation()
         val lat = location?.latitude ?: DEFAULT_LATITUDE
         val long = location?.longitude ?: DEFAULT_LONGITUDE
 
-        return YelpDbClient.service.searchBusinesses(lat.toString(), long.toString())
+        return YelpDbClient.service.searchBusinesses(lat.toString(), long.toString()).businesses.map { it.toDomainModel() }
     }
 
     private suspend fun findLastLocation() : Location?{

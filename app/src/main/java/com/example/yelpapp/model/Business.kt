@@ -14,11 +14,16 @@ data class Business(
     val location: Location,
     val name: String,
     val phone: String,
-    val price: String,
-    val rating: Double,
+    val price: String?,
+    val rating: Double?,
     val review_count: Int,
     val transactions: List<String>,
     val url: String
 )
 
-fun Business.toDomainModel() : DomainModel = DomainModel(alias,display_phone,distance,id,image_url,is_closed,location.address1,name,phone,price,rating,review_count,transactions,url)
+fun Business.toDomainModel() : DomainModel{
+    return DomainModel(alias,display_phone,distance,id,image_url,is_closed,location.address1,location.city,name,phone,
+        price ?: "",
+        rating ?: 0.0,
+        review_count,transactions,url)
+}

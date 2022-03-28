@@ -21,5 +21,9 @@
         android:id="@+id/detail_dest"
         android:name="com.example.yelpapp.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="business"
+            app:argType="com.example.yelpapp.domain.Business" />
+    </fragment>
 </navigation>
