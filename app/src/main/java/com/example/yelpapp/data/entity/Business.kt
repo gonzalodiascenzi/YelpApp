@@ -1,4 +1,4 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data.entity
 
 data class Business(
     val alias: String,

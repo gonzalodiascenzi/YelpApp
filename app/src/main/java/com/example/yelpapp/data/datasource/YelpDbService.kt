@@ -1,5 +1,6 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data.datasource
 
+import com.example.yelpapp.data.entity.YelpSearchResult
 import retrofit2.http.GET
 import retrofit2.http.Query
 

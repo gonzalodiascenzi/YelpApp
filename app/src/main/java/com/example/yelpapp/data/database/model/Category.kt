@@ -1,4 +1,4 @@
-package com.example.yelpapp.model.database
+package com.example.yelpapp.data.database.model
 
 import androidx.room.Entity
 import androidx.room.ForeignKey

@@ -1,4 +1,4 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data.datasource
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

@@ -1,8 +1,8 @@
 package com.example.yelpapp.ui.main
 
 import androidx.lifecycle.*
-import com.example.yelpapp.model.Business
-import com.example.yelpapp.model.BusinessRepository
+import com.example.yelpapp.data.entity.Business
+import com.example.yelpapp.data.repository.BusinessRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

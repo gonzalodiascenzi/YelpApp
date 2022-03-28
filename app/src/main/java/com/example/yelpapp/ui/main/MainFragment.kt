@@ -1,20 +1,14 @@
 package com.example.yelpapp.ui.main
 
-import android.Manifest
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.FragmentMainBinding
-import com.example.yelpapp.model.Business
-import com.example.yelpapp.model.BusinessRepository
-import com.example.yelpapp.ui.common.PermissionRequester
+import com.example.yelpapp.data.repository.BusinessRepository
 import com.example.yelpapp.ui.common.launchAndCollect
-import kotlinx.coroutines.launch
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 

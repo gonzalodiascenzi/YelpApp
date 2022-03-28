@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.ViewBusinessItemBinding
-import com.example.yelpapp.model.Business
+import com.example.yelpapp.data.entity.Business
 import com.example.yelpapp.ui.common.basicDiffUtil
 import com.example.yelpapp.ui.common.inflate
 import com.example.yelpapp.ui.common.loadUrl

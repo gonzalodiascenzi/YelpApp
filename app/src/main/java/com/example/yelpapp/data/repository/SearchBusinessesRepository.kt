@@ -1,6 +1,6 @@
 package com.example.yelpapp.data.repository
 
-import com.example.yelpapp.model.YelpSearchResult
+import com.example.yelpapp.data.entity.YelpSearchResult
 import io.reactivex.Observable
 
 

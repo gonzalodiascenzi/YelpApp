@@ -1,8 +1,13 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data.repository
 
 import android.Manifest
 import android.app.Application
 import android.location.Location
+import com.example.yelpapp.data.datasource.YelpDbClient
+import com.example.yelpapp.data.entity.YelpSearchResult
+import com.example.yelpapp.model.LocationDataSource
+import com.example.yelpapp.data.PermissionChecker
+import com.example.yelpapp.model.PlayServicesLocationDataSource
 
 class BusinessRepository(app : Application) {
 

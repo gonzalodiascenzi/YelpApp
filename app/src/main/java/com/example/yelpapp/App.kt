@@ -2,7 +2,7 @@ package com.example.yelpapp
 
 import android.app.Application
 import androidx.room.Room
-import com.example.yelpapp.model.database.YelpDataBase
+import com.example.yelpapp.data.database.YelpDataBase
 
 class App: Application() {
 

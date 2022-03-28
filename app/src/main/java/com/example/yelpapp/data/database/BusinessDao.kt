@@ -1,6 +1,7 @@
-package com.example.yelpapp.model.database
+package com.example.yelpapp.data.database
 
 import androidx.room.*
+import com.example.yelpapp.data.database.model.Business
 import kotlinx.coroutines.flow.Flow
 
 @Dao
