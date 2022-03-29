@@ -1,4 +1,4 @@
-package com.devexperto.architectcoders
+package com.example.yelpapp
 
 import android.app.Application
 import androidx.room.Room
