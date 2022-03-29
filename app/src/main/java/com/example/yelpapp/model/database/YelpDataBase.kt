@@ -9,4 +9,5 @@ import androidx.room.TypeConverters
 abstract class YelpDataBase: RoomDatabase() {
 
     abstract fun businessDao(): BusinessDao
+    abstract fun movieDao(): BusinessDao
 }

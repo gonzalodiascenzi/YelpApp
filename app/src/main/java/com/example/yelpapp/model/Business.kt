@@ -1,4 +1,12 @@
 package com.example.yelpapp.model
+import com.google.gson.annotations.SerializedName
+
+data class RemoteResult(
+    val page: Int,
+    val results: List<Business>,
+    @SerializedName("total_pages") val totalPages: Int,
+    @SerializedName("total_results") val totalResults: Int
+)
 
 data class Business(
     val alias: String,

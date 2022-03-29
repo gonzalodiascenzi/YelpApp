@@ -1,10 +1,10 @@
-package com.example.yelpapp
+package com.devexperto.architectcoders
 
 import android.app.Application
 import androidx.room.Room
 import com.example.yelpapp.model.database.YelpDataBase
 
-class App: Application() {
+class App : Application() {
 
     lateinit var db: YelpDataBase
         private set
@@ -14,7 +14,7 @@ class App: Application() {
 
         db = Room.databaseBuilder(
             this,
-            YelpDataBase::class.java, "yelp-db"
+            YelpDataBase::class.java, "business-db"
         ).build()
     }
 }

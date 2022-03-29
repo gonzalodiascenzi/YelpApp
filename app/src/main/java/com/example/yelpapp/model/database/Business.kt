@@ -3,7 +3,7 @@ package com.example.yelpapp.model.database
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.yelpapp.model.Category
+
 
 @Entity
 data class Business(
@@ -13,7 +13,7 @@ data class Business(
 //    @Embedded
 //    val categories: List<Category>?,
     @Embedded
-    val coordinates: Coordinates?,
+    val coordinates: Any,
     val display_phone: String,
     val distance: Double,
     val image_url: String,
@@ -28,4 +28,6 @@ data class Business(
     val transactions: List<String>?,
     val url: String
 )
+
+
 

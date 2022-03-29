@@ -1,8 +1,8 @@
 package com.example.yelpapp.ui.main
 
 import androidx.lifecycle.*
-import com.example.yelpapp.model.Business
 import com.example.yelpapp.model.BusinessRepository
+import com.example.yelpapp.model.database.Business
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,10 +15,18 @@ class MainViewModel(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
+    init {
+        viewModelScope.launch {
+            businessRepository.nearBusiness.collect{ business ->
+                _state.value = UiState(businesses = business)
+            }
+        }
+    }
+
     fun onUiReady(){
         viewModelScope.launch {
             _state.value = UiState(loading = true)
-            _state.value = UiState(loading = false,businesses = businessRepository.searchBusiness().businesses)
+            businessRepository.requestBusinesses()
         }
     }
 
