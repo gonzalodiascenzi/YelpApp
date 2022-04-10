@@ -5,12 +5,13 @@ import android.app.Application
 import android.location.Location
 import com.example.yelpapp.domain.Business
 
-class BusinessRepository(app : Application) {
+class BusinessRepository(app : Application,private val locationDataSource : LocationDataSource = PlayServicesLocationDataSource(app)
+) {
 
     private val DEFAULT_LATITUDE = -31.417
     private val DEFAULT_LONGITUDE = -64.183
 
-    private val locationDataSource : LocationDataSource = PlayServicesLocationDataSource(app)
+   // private val locationDataSource : LocationDataSource = PlayServicesLocationDataSource(app)
 
     private val coarsePermissionChecker = PermissionChecker(
         app,
