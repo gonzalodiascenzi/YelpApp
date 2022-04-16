@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.ViewBusinessItemBinding
+<<<<<<< HEAD
 import com.example.yelpapp.data.entity.Business
+=======
+import com.example.yelpapp.domain.Business
+>>>>>>> a5eeb09a5fc5cb26d7a2fd7dbaccd526b34624e0
 import com.example.yelpapp.ui.common.basicDiffUtil
 import com.example.yelpapp.ui.common.inflate
 import com.example.yelpapp.ui.common.loadUrl
@@ -34,8 +38,8 @@ class BusinessesAdapter (
             ratingBar.rating = business.rating.toFloat()
             tvRating.text = business.rating.toString()
             tvPhone.text = business.phone
-            tvAddress.text = business.location.address1
-            tvCity.text = business.location.city
+            tvAddress.text = business.address
+            tvCity.text = business.city
         }
     }
 }

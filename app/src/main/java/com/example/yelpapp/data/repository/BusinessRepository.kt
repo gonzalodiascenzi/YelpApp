@@ -4,9 +4,9 @@ import android.Manifest
 import android.app.Application
 import android.location.Location
 import com.example.yelpapp.data.datasource.YelpDbClient
-import com.example.yelpapp.data.entity.YelpSearchResult
 import com.example.yelpapp.model.LocationDataSource
 import com.example.yelpapp.data.PermissionChecker
+import com.example.yelpapp.data.entity.toDomainModel
 import com.example.yelpapp.model.PlayServicesLocationDataSource
 
 class BusinessRepository(app : Application) {
@@ -21,17 +21,16 @@ class BusinessRepository(app : Application) {
         Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
-    suspend fun searchBusiness() : YelpSearchResult {
+    suspend fun searchBusiness() : List<Unit> {
         val location = findLastLocation()
         val lat = location?.latitude ?: DEFAULT_LATITUDE
         val long = location?.longitude ?: DEFAULT_LONGITUDE
 
-        return YelpDbClient.service.searchBusinesses(lat.toString(), long.toString())
+        return YelpDbClient.service.searchBusinesses(lat.toString(), long.toString()).businesses.map { it.toDomainModel() }
     }
 
     private suspend fun findLastLocation() : Location?{
         val success = coarsePermissionChecker.check()
         return if (success) locationDataSource.findLastLocation() else null
     }
-
 }

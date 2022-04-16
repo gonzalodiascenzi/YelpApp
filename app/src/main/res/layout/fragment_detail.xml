@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".ui.detail.DetailFragment">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         app:layout_scrollFlags="scroll|enterAlways"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        android:theme="@style/AppTheme.DarkOverlay"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -33,6 +34,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+                app:layout_collapseMode="pin"
                 android:layout_height="?attr/actionBarSize"
                 app:navigationIcon="@drawable/ic_arrow_back"
                 app:layout_scrollFlags="scroll|enterAlways" />
@@ -40,8 +42,6 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -53,8 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
 
             <TextView
                 android:id="@+id/summary"
@@ -81,5 +79,4 @@
         app:layout_anchor="@id/appbar"
         app:layout_anchorGravity="bottom|end"
         app:fabSize="mini"/>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

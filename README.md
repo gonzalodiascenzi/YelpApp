@@ -12,6 +12,6 @@ Arturo Wilson: Mobile Developer Mobile Freelancer.
 
 Julian Ybarra: 26 años. Desarollador Mobile Android.
 
-Simon Perez: 28 años. Desarrollador Android. Trabajando actualmente como desarrollador Android en SMU S.A. Chile.
+Simon Perez: 28 años. Desarrollador Android. Trabajando actualmente como Desarrollador Android en SMU S.A. Chile.
 
 Gonzalo Di Ascenzi: 22 años. Estudiante de Ingenieria Informatica, Mobile Developer Android Trainee en Globant.
