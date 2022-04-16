@@ -7,11 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.FragmentMainBinding
-<<<<<<< HEAD
+
 import com.example.yelpapp.data.repository.BusinessRepository
-=======
-import com.example.yelpapp.model.BusinessRepository
->>>>>>> a5eeb09a5fc5cb26d7a2fd7dbaccd526b34624e0
 import com.example.yelpapp.ui.common.launchAndCollect
 
 class MainFragment : Fragment(R.layout.fragment_main) {

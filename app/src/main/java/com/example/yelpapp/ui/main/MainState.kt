@@ -5,11 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-<<<<<<< HEAD
-import com.example.yelpapp.data.entity.Business
-=======
 import com.example.yelpapp.domain.Business
->>>>>>> a5eeb09a5fc5cb26d7a2fd7dbaccd526b34624e0
 import com.example.yelpapp.ui.common.PermissionRequester
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -19,7 +15,7 @@ fun Fragment.buildMainState(
     navController: NavController = findNavController(),
     locationPermissionRequester: PermissionRequester = PermissionRequester(
         this,
-        Manifest.permission.ACCESS_COARSE_LOCATION
+            Manifest.permission.ACCESS_COARSE_LOCATION
     )
 ) = MainState(scope, navController, locationPermissionRequester)
 

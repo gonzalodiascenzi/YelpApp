@@ -18,7 +18,9 @@ data class Business(
     val rating: Double?,
     val review_count: Int,
     val transactions: List<String>,
-    val url: String
+    val url: String,
+    val city: CharSequence?,
+    val address: CharSequence?
 )
 
 fun Business.toDomainModel() : DomainModel{
