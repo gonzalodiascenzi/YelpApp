@@ -4,6 +4,7 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.yelpapp.model.Category
+import com.example.yelpapp.domain.Business as DomainModel
 
 @Entity
 data class Business(
@@ -29,3 +30,6 @@ data class Business(
     val url: String
 )
 
+fun Business.toDomainModel() = DomainModel(alias,display_phone,distance,id,image_url,is_closed, location?.address1 ?: "",location?.city ?: "",name,phone,price,rating,review_count,transactions ?: emptyList(),url)
+
+fun DomainModel.fromDomainModel() = Business(id,alias,null,display_phone,distance,image_url,is_closed,null,name, phone, price, rating, review_count, transactions, url)

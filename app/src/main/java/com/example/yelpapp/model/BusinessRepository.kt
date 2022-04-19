@@ -1,32 +1,26 @@
 package com.example.yelpapp.model
 
-import android.Manifest
-import android.app.Application
-import android.location.Location
-import com.example.yelpapp.domain.Business
+import com.example.yelpapp.App
 
-class BusinessRepository(app : Application) {
+class BusinessRepository(app : App) {
 
     private val DEFAULT_LATITUDE = -31.417
     private val DEFAULT_LONGITUDE = -64.183
 
-    private val locationDataSource : LocationDataSource = PlayServicesLocationDataSource(app)
+    private val regionRepository : RegionRepository = RegionRepository(app)
+    private val localDataSource : LocalDataSource = LocalDataSource(app.db.businessDao())
+    private val remoteDataSource : RemoteDataSource = RemoteDataSource(YelpDbClient.service)
 
-    private val coarsePermissionChecker = PermissionChecker(
-        app,
-        Manifest.permission.ACCESS_COARSE_LOCATION
-    )
+    val business = localDataSource.business
 
-    suspend fun searchBusiness() : List<Business> {
-        val location = findLastLocation()
-        val lat = location?.latitude ?: DEFAULT_LATITUDE
-        val long = location?.longitude ?: DEFAULT_LONGITUDE
+    suspend fun requestBusiness() {
+        if(localDataSource.isEmpty()){
+            val location = regionRepository.findLastCoordinates()
+            val lat = location?.latitude ?: DEFAULT_LATITUDE
+            val long = location?.longitude ?: DEFAULT_LONGITUDE
 
-        return YelpDbClient.service.searchBusinesses(lat.toString(), long.toString()).businesses.map { it.toDomainModel() }
-    }
-
-    private suspend fun findLastLocation() : Location?{
-        val success = coarsePermissionChecker.check()
-        return if (success) locationDataSource.findLastLocation() else null
+            val business = remoteDataSource.searchBusiness(lat.toString(),long.toString())
+            localDataSource.save(business)
+        }
     }
 }
