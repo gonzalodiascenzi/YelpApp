@@ -1,6 +1,8 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.model.datasource
 
 import com.example.yelpapp.domain.Business
+import com.example.yelpapp.model.YelpDbService
+import com.example.yelpapp.model.toDomainModel
 
 class RemoteDataSource(
     private val service : YelpDbService

@@ -24,6 +24,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         val binding = FragmentDetailBinding.bind(view)
 
         binding.toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        binding.businessDetailFavorite.setOnClickListener { viewModel.onFavoriteClicked() }
 
         launchAndCollect(viewModel.state) { binding.updateUI(it) }
     }

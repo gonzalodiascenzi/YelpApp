@@ -2,12 +2,14 @@ package com.example.yelpapp.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.yelpapp.domain.Business
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 class DetailViewModel(
     private val business: Business
@@ -24,6 +26,12 @@ class DetailViewModel(
         val loading: Boolean = false,
         val business: Business? = null
     )
+}
+
+fun onFavoriteClicked() {
+    viewModelScope.launch {
+        _state.value.business?.let { repository.switchFavorite(it) }
+    }
 }
 
 @Suppress("UNCHECKED_CAST")

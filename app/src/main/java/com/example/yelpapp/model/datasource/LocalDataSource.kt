@@ -1,4 +1,4 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.model.datasource
 
 import com.example.yelpapp.model.database.BusinessDao
 import kotlinx.coroutines.flow.Flow

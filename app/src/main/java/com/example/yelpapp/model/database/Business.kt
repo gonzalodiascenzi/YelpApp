@@ -11,6 +11,7 @@ data class Business(
     @PrimaryKey
     val id: String,
     val alias: String,
+    val favorite: Boolean,
 //    @Embedded
 //    val categories: List<Category>?,
     @Embedded

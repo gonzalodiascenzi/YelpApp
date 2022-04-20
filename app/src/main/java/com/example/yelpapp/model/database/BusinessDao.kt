@@ -19,5 +19,5 @@ interface BusinessDao {
     suspend fun insertBusiness(business: List<Business>)
 
     @Update
-    fun updateBusiness(business: Business)
+    suspend fun updateBusiness(business: Business)
 }
