@@ -1,5 +1,6 @@
 package com.example.yelpapp.ui.detail
 
+
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.View

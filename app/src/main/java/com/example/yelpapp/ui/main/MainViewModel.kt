@@ -1,8 +1,8 @@
-package com.example.yelpapp.ui.main
-
 import androidx.lifecycle.*
 import com.example.yelpapp.domain.Business
 import com.example.yelpapp.model.BusinessRepository
+import com.example.yelpapp.model.Error
+import com.example.yelpapp.model.toError
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,21 +19,25 @@ class MainViewModel(
     init {
         viewModelScope.launch {
             businessRepository.business
+                .catch {cause -> _state.update { it.copy(error =  cause.toError()) }}
                 .collect { businesses -> _state.value = UiState(businesses = businesses)
-            }
+                }
         }
     }
 
     fun onUiReady(){
         viewModelScope.launch {
             _state.value = UiState(loading = true)
-            businessRepository.requestBusiness()
+            val error =    businessRepository.requestBusiness()
+            _state.update { _state.value.copy(loading = false, error = error) }
+
         }
     }
 
     data class UiState(
         val loading: Boolean = false,
         val businesses: List<Business>? = null,
+        val error : Error? = null
     )
 }
 

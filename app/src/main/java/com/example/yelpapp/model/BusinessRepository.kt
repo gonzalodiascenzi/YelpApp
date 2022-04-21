@@ -13,7 +13,7 @@ class BusinessRepository(app : App) {
 
     val business = localDataSource.business
 
-    suspend fun requestBusiness() {
+    suspend fun requestBusiness(): Error? = tryCall {
         if(localDataSource.isEmpty()){
             val location = regionRepository.findLastCoordinates()
             val lat = location?.latitude ?: DEFAULT_LATITUDE
