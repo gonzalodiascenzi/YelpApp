@@ -1,5 +1,7 @@
 package com.example.yelpapp.ui.main
 
+import MainViewModel
+import MainViewModelFactory
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
@@ -28,7 +30,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             recycler.adapter = adapter
         }
 
-        viewLifecycleOwner.launchAndCollect(viewModel.state) {binding.updateUI(it)}
+        viewLifecycleOwner.launchAndCollect(viewModel.state) {binding.updateUI(it)
+            binding.error = it.error?.let(mainState::errorToString)
+        }
 
         mainState.requestLocationPermission { viewModel.onUiReady() }
 
