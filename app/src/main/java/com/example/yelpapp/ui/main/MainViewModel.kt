@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.*
 
 class MainViewModel(
     private val businessRepository: BusinessRepository
@@ -14,6 +15,16 @@ class MainViewModel(
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
+
+
+    init {
+        viewModelScope.launch {
+            businessRepository.business
+                .collect { businesses -> _state.value = UiState(businesses = businesses)
+                }
+        }
+    }
+
 
     fun onUiReady() {
         viewModelScope.launch {

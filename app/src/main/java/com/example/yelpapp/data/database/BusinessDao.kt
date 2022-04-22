@@ -14,10 +14,10 @@ interface BusinessDao {
     fun findById(id: String): Flow<Business>
 
     @Query("SELECT COUNT(id) FROM Business")
-    fun businessCount(): Int
+    suspend fun businessCount(): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBusiness(business: List<Business>)
+    suspend fun insertBusiness(business: List<Business>)
 
     @Update
     fun updateBusiness(business: Business)

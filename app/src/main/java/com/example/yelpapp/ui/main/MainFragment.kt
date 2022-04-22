@@ -7,13 +7,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.FragmentMainBinding
-
 import com.example.yelpapp.data.repository.BusinessRepository
+import com.example.yelpapp.ui.common.app
 import com.example.yelpapp.ui.common.launchAndCollect
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private val viewModel: MainViewModel by viewModels { MainViewModelFactory(BusinessRepository(requireActivity().application)) }
+    private val viewModel: MainViewModel by viewModels { MainViewModelFactory(BusinessRepository(requireActivity().app)) }
 
     private val adapter = BusinessesAdapter { mainState.onBusinessClicked(it)}
 
