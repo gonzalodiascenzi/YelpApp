@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yelpapp.R
-import com.example.yelpapp.data.entity.Business
 import com.example.yelpapp.databinding.ViewBusinessItemBinding
+import com.example.yelpapp.domain.Business
 
 import com.example.yelpapp.ui.common.basicDiffUtil
 import com.example.yelpapp.ui.common.inflate
@@ -30,7 +30,7 @@ class BusinessesAdapter (
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ViewBusinessItemBinding.bind(view)
         fun bind(business: Business)  = with(binding){
-            business.rating?.let {
+            business.rating.let {
                 cover.loadUrl(business.image_url)
                 title.text = business.name
                 ratingBar.rating = business.rating.toFloat()

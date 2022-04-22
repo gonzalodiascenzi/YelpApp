@@ -7,6 +7,7 @@ import com.example.yelpapp.data.datasource.YelpDbClient
 import com.example.yelpapp.model.LocationDataSource
 import com.example.yelpapp.data.PermissionChecker
 import com.example.yelpapp.data.entity.toDomainModel
+import com.example.yelpapp.domain.Business
 import com.example.yelpapp.model.PlayServicesLocationDataSource
 
 class BusinessRepository(app : Application) {
@@ -21,7 +22,7 @@ class BusinessRepository(app : Application) {
         Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
-    suspend fun searchBusiness() : List<Unit> {
+    suspend fun searchBusiness() : List<Business> {
         val location = findLastLocation()
         val lat = location?.latitude ?: DEFAULT_LATITUDE
         val long = location?.longitude ?: DEFAULT_LONGITUDE

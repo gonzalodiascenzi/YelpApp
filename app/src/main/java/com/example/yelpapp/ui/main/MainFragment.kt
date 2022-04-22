@@ -37,7 +37,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun FragmentMainBinding.updateUI(state: MainViewModel.UiState) {
         progress.isVisible = state.loading
         state.businesses?.let(adapter::submitList)
-
     }
 
 
