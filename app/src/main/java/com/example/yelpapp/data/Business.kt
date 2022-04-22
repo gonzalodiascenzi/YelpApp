@@ -1,4 +1,4 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data
 
 import com.example.yelpapp.domain.Business as DomainModel
 

@@ -1,9 +1,8 @@
-package com.example.yelpapp.model.database
+package com.example.yelpapp.framework.database
 
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.yelpapp.model.Category
 import com.example.yelpapp.domain.Business as DomainModel
 
 @Entity

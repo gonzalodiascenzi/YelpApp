@@ -1,7 +1,6 @@
-package com.example.yelpapp.model.database
+package com.example.yelpapp.framework.database
 
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity
