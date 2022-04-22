@@ -1,4 +1,4 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data
 
 data class Center(
     val latitude: Double,

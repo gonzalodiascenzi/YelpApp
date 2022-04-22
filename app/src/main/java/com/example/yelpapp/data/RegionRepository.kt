@@ -1,9 +1,11 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data
 
 import android.Manifest
 import android.location.Location
 import com.example.yelpapp.App
 import com.example.yelpapp.domain.Coordinates
+import com.example.yelpapp.data.datasource.LocationDataSource
+import com.example.yelpapp.framework.datasource.PlayServicesLocationDataSource
 
 class RegionRepository(app : App) {
 

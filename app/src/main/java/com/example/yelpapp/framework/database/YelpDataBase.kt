@@ -1,4 +1,4 @@
-package com.example.yelpapp.model.database
+package com.example.yelpapp.framework.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

@@ -1,6 +1,8 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data
 
 import com.example.yelpapp.App
+import com.example.yelpapp.framework.datasource.RoomDataSource
+import com.example.yelpapp.framework.datasource.ServerDataSource
 
 class BusinessRepository(app : App) {
 
@@ -8,8 +10,8 @@ class BusinessRepository(app : App) {
     private val DEFAULT_LONGITUDE = -64.183
 
     private val regionRepository : RegionRepository = RegionRepository(app)
-    private val localDataSource : LocalDataSource = LocalDataSource(app.db.businessDao())
-    private val remoteDataSource : RemoteDataSource = RemoteDataSource(YelpDbClient.service)
+    private val localDataSource : RoomDataSource = RoomDataSource(app.db.businessDao())
+    private val remoteDataSource : ServerDataSource = ServerDataSource(YelpDbClient.service)
 
     val business = localDataSource.business
 

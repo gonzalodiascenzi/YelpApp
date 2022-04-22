@@ -1,4 +1,4 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data
 
 import retrofit2.http.GET
 import retrofit2.http.Query

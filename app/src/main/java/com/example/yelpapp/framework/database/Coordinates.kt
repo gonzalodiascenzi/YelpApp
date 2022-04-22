@@ -1,4 +1,4 @@
-package com.example.yelpapp.model.database
+package com.example.yelpapp.framework.database
 
 data class Coordinates(
     val latitude: Double?,
