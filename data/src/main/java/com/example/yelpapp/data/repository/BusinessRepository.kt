@@ -1,18 +1,22 @@
 package com.example.yelpapp.data.repository
 
-import com.example.yelpapp.data.datasource.YelpDbClient
-import com.example.yelpapp.App
+
 import com.example.yelpapp.model.LocalDataSource
 import com.example.yelpapp.model.RemoteDataSource
+import javax.inject.Inject
 
-class BusinessRepository(app : App) {
+class BusinessRepository @Inject constructor(
+    private val regionRepository : RegionRepository,
+            private val localDataSource : LocalDataSource ,
+            private val remoteDataSource : RemoteDataSource
+) {
 
     private val DEFAULT_LATITUDE = -31.417
     private val DEFAULT_LONGITUDE = -64.183
 
-    private val regionRepository : RegionRepository = RegionRepository(app)
+  /*  private val regionRepository : RegionRepository = RegionRepository(app)
     private val localDataSource : LocalDataSource = LocalDataSource(app.db.businessDao())
-    private val remoteDataSource : RemoteDataSource = RemoteDataSource(YelpDbClient.service)
+    private val remoteDataSource : RemoteDataSource = RemoteDataSource(YelpDbClient.service)*/
 
     val business = localDataSource.business
 

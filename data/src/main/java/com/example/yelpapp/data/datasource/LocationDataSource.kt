@@ -5,7 +5,6 @@ import android.app.Application
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.suspendCancellableCoroutine
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import kotlin.coroutines.resume
 
 interface LocationDataSource {

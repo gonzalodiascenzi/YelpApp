@@ -1,27 +1,33 @@
 package com.example.yelpapp.data.repository
 
-import android.Manifest
-import android.location.Location
+
+import com.example.yelpapp.data.PermissionChecker
 
 
 import com.example.yelpapp.domain.Coordinates
 import com.example.yelpapp.model.LocationDataSource
-import com.example.yelpapp.model.PlayServicesLocationDataSource
+import javax.inject.Inject
 
-class RegionRepository(app :  App) {
+class RegionRepository @Inject constructor(
+    private val locationDataSource: LocationDataSource,
+    private val permissionChecker : PermissionChecker
+) {
 
-    private val locationDataSource: LocationDataSource = PlayServicesLocationDataSource(app)
-    private val coarsePermissionChecker = PermissionChecker(
-        app,
-        Manifest.permission.ACCESS_COARSE_LOCATION
-    )
+    companion object {
+        const val DEFAULT_REGION = "US"
+    }
+   /* suspend fun findLastCoordinates(): Coordinates? = findLastLocation()?.toCoordinates()
 
-    suspend fun findLastCoordinates(): Coordinates? = findLastLocation()?.toCoordinates()
-
-    private suspend fun Location.toCoordinates() = Coordinates(latitude,longitude)
+    private suspend fun Location.toCoordinates() = Coordinates(latitude,longitude)*/
 
     private suspend fun findLastLocation(): Location? {
-        val success = coarsePermissionChecker.check()
-        return if (success) locationDataSource.findLastLocation() else null
+       /* val success = coarsePermissionChecker.check()
+        return if (success) locationDataSource.findLastLocation() else null*/
+        return if (permissionChecker.check(COARSE_LOCATION)) {
+            locationDataSource.findLastLocation() ?: DEFAULT_REGION
+        } else {
+            DEFAULT_REGION
+        }
+
     }
 }
