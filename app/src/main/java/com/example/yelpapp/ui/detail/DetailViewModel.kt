@@ -28,7 +28,8 @@ class DetailViewModel(
 
 @Suppress("UNCHECKED_CAST")
 class DetailViewModelFactory(
-    private val business: Business) :
+    private val business: Business
+) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return DetailViewModel(business) as T

@@ -1,7 +1,7 @@
 package com.example.yelpapp.domain
 
-import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
 @Parcelize
 data class Business(
@@ -20,4 +20,4 @@ data class Business(
     val review_count: Int,
     val transactions: List<String>,
     val url: String
-) : Parcelable
+) : Serializable

@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "YelpApp"
 include ':app'
+include ':domain'
+include ':usecases'
+include ':data'

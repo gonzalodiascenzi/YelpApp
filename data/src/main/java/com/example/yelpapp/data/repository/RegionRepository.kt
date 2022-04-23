@@ -1,12 +1,14 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data.repository
 
 import android.Manifest
 import android.location.Location
-import com.example.yelpapp.App
-import com.example.yelpapp.data.PermissionChecker
-import com.example.yelpapp.domain.Coordinates
 
-class RegionRepository(app : App) {
+
+import com.example.yelpapp.domain.Coordinates
+import com.example.yelpapp.model.LocationDataSource
+import com.example.yelpapp.model.PlayServicesLocationDataSource
+
+class RegionRepository(app :  App) {
 
     private val locationDataSource: LocationDataSource = PlayServicesLocationDataSource(app)
     private val coarsePermissionChecker = PermissionChecker(

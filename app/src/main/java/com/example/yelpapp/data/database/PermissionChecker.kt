@@ -1,4 +1,4 @@
-package com.example.yelpapp.data
+package com.example.yelpapp.data.database
 
 import android.app.Application
 import android.content.pm.PackageManager

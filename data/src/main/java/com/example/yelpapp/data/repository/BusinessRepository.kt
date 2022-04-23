@@ -3,7 +3,6 @@ package com.example.yelpapp.data.repository
 import com.example.yelpapp.data.datasource.YelpDbClient
 import com.example.yelpapp.App
 import com.example.yelpapp.model.LocalDataSource
-import com.example.yelpapp.model.RegionRepository
 import com.example.yelpapp.model.RemoteDataSource
 
 class BusinessRepository(app : App) {

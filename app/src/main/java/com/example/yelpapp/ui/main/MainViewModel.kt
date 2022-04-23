@@ -25,12 +25,10 @@ class MainViewModel(
         }
     }
 
-
-    fun onUiReady() {
+    fun onUiReady(){
         viewModelScope.launch {
             _state.value = UiState(loading = true)
-            _state.value =
-                UiState(loading = false, businesses = businessRepository.searchBusiness())
+            businessRepository.requestBusiness()
         }
     }
 
