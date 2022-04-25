@@ -2,7 +2,6 @@ package com.example.yelpapp.data.server
 
 
 import arrow.core.Either
-import com.example.yelpapp.data.database.BusinessDao
 import com.example.yelpapp.data.datasource.BusinessRemoteDataSource
 import com.example.yelpapp.data.entity.RemoteBusiness
 import com.example.yelpapp.data.tryCall

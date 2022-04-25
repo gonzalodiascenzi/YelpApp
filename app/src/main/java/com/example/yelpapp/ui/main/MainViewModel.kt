@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val businessRepository: BusinessRepository,
+    //private val businessRepository: BusinessRepository,
     private val getBusinessUseCase: GetBusinessUseCase
 ) : ViewModel() {
 
@@ -23,16 +23,16 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            businessRepository.business
+          /*  businessRepository.business
                 .collect { businesses -> _state.value = UiState(businesses = businesses)
-                }
+                }*/
         }
     }
 
     fun onUiReady(){
         viewModelScope.launch {
             _state.value = UiState(loading = true)
-            businessRepository.requestBusiness()
+            //businessRepository.requestBusiness()
         }
     }
 

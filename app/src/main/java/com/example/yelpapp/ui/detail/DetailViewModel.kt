@@ -13,14 +13,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val business: Business
+    //private val business: Business
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
-        _state.update { UiState(business = business) }
+        //_state.update { UiState(business = business) }
     }
 
     data class UiState(
@@ -29,12 +29,3 @@ class DetailViewModel @Inject constructor(
     )
 }
 
-@Suppress("UNCHECKED_CAST")
-class DetailViewModelFactory(
-    private val business: Business
-) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return DetailViewModel(business) as T
-    }
-}
