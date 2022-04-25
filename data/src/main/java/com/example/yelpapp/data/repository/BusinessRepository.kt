@@ -12,9 +12,6 @@ class BusinessRepository @Inject constructor(
     private val remoteDataSource : BusinessRemoteDataSource
 ) {
 
-/*    private val DEFAULT_LATITUDE = -31.417
-    private val DEFAULT_LONGITUDE = -64.183*/
-
     val business get() = localDataSource.business
 
     suspend fun requestBusiness(): Error? {
