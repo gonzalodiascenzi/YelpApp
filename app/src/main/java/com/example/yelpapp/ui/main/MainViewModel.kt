@@ -2,19 +2,21 @@ package com.example.yelpapp.ui.main
 
 import androidx.lifecycle.*
 import com.example.yelpapp.data.repository.BusinessRepository
+import com.example.yelpapp.data.toError
 import com.example.yelpapp.domain.Business
+import com.example.yelpapp.domain.Error
 import com.example.yelpapp.usecases.GetBusinessUseCase
+import com.example.yelpapp.usecases.RequestBusinessUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     //private val businessRepository: BusinessRepository,
-    private val getBusinessUseCase: GetBusinessUseCase
+    private val getBusinessUseCase: GetBusinessUseCase,
+    private val requestBusinessUseCase: RequestBusinessUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
@@ -23,6 +25,9 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            getBusinessUseCase()
+                .catch { cause -> _state.update { it.copy(error = cause.toError()) } }
+                .collect{ bussiness -> _state.update { UiState(businesses = bussiness) }}
           /*  businessRepository.business
                 .collect { businesses -> _state.value = UiState(businesses = businesses)
                 }*/
@@ -32,6 +37,8 @@ class MainViewModel @Inject constructor(
     fun onUiReady(){
         viewModelScope.launch {
             _state.value = UiState(loading = true)
+            val error = requestBusinessUseCase()
+            _state.value = _state.value.copy(loading = false, error = error)
             //businessRepository.requestBusiness()
         }
     }
@@ -39,5 +46,6 @@ class MainViewModel @Inject constructor(
     data class UiState(
         val loading: Boolean = false,
         val businesses: List<Business>? = null,
+        val error: Error? = null
     )
 }
