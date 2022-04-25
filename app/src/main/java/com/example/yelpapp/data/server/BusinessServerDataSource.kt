@@ -1,25 +1,40 @@
 package com.example.yelpapp.data.server
 
 
+import arrow.core.Either
 import com.example.yelpapp.data.database.BusinessDao
-import com.example.yelpapp.data.database.model.fromDomainModel
-import com.example.yelpapp.data.database.model.toDomainModel
-import kotlinx.coroutines.flow.Flow
+import com.example.yelpapp.data.datasource.BusinessRemoteDataSource
+import com.example.yelpapp.data.entity.RemoteBusiness
+import com.example.yelpapp.data.tryCall
 import com.example.yelpapp.domain.Business
-import kotlinx.coroutines.flow.map
+import com.example.yelpapp.domain.Error
+import javax.inject.Inject
 
 
-class BusinessServerDataSource(
-    private val businessDao: BusinessDao
-) {
+class BusinessServerDataSource @Inject constructor() : BusinessRemoteDataSource {
 
-    val business: Flow<List<Business>> = businessDao.getAll().map { it.map { it.toDomainModel() } }
-
-    suspend fun isEmpty(): Boolean = businessDao.businessCount() == 0
-
-    fun findById(id: String): Flow<Business> = businessDao.findById(id).map { it.toDomainModel() }
-
-    suspend fun save(business: List<Business>) {
-        businessDao.insertBusiness(business.map { it.fromDomainModel() })
+    override suspend fun searchBusiness(region: Pair<String, String>): Either<Error, List<Business>> = tryCall {
+        RemoteConnection.service
+            .searchBusinesses(region.first, region.second)
+            .businesses.map { it.toDomainModel() }
     }
 }
+
+private fun RemoteBusiness.toDomainModel(): Business =
+    Business(
+        alias,
+        display_phone,
+        distance,
+        id,
+        image_url,
+        is_closed,
+        address.toString(),
+        city.toString(),
+        name,
+        phone,
+        price ?: "",
+        rating ?: 0.0,
+        review_count,
+        transactions,
+        url
+    )

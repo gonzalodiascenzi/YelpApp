@@ -2,7 +2,7 @@ package com.example.yelpapp.data.entity
 
 import com.example.yelpapp.domain.Business as DomainModel
 
-data class Business(
+data class RemoteBusiness(
     val alias: String,
     val categories: List<Category>,
     val coordinates: Coordinates,
@@ -23,7 +23,7 @@ data class Business(
     val address: CharSequence?
 )
 
-fun Business.toDomainModel() : DomainModel{
+fun RemoteBusiness.toDomainModel() : DomainModel{
     return DomainModel(alias,display_phone,distance,id,image_url,is_closed,location.address1,location.city,name,phone,
         price ?: "",
         rating ?: 0.0,

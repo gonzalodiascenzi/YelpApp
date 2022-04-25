@@ -17,7 +17,7 @@ class PlayServicesLocationDataSource @Inject constructor(application: Applicatio
     private val geocoder = Geocoder(application)
 
     @SuppressLint("MissingPermission")
-    override suspend fun findLastLocation(): String? =
+    override suspend fun findLastLocation(): Pair<String, String> =
         suspendCancellableCoroutine { continuation ->
             fusedLocationClient.lastLocation
                 .addOnCompleteListener {
@@ -25,10 +25,10 @@ class PlayServicesLocationDataSource @Inject constructor(application: Applicatio
                 }
         }
 
-    private fun Location?.toRegion(): String? {
+    private fun Location?.toRegion(): Pair<String, String> {
         val addresses = this?.let {
             geocoder.getFromLocation(latitude, longitude, 1)
         }
-        return addresses?.firstOrNull()?.countryCode
+        return Pair(addresses?.get(0)?.latitude.toString(), addresses?.get(0)?.latitude.toString())
     }
 }

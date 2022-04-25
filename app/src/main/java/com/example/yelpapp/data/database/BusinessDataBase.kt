@@ -8,7 +8,7 @@ import com.example.yelpapp.data.database.model.Category
 
 @Database(entities = [Business::class, Category::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
-abstract class YelpDataBase: RoomDatabase() {
+abstract class BusinessDataBase: RoomDatabase() {
 
     abstract fun businessDao(): BusinessDao
 }

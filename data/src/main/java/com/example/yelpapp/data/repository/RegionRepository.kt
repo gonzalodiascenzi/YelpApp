@@ -13,12 +13,12 @@ class RegionRepository @Inject constructor(
 ) {
 
     companion object {
-        const val DEFAULT_REGION = "US"
+        val DEFAULT_REGION = Pair("","")
     }
 
-    suspend fun findLastLocation(): String {
+    suspend fun findLastLocation(): Pair<String, String> {
         return if (permissionChecker.check(PermissionChecker.Permission.COARSE_LOCATION)) {
-            locationDataSource.findLastLocation() ?: DEFAULT_REGION
+            locationDataSource.findLastLocation()
         } else {
             DEFAULT_REGION
         }
