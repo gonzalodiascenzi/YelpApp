@@ -9,6 +9,6 @@ interface BusinessLocalDataSource {
     val business: Flow<List<Business>>
 
     suspend fun isEmpty(): Boolean
-    fun findById(id: Int): Flow<Business>
-    suspend fun save(movies: List<Business>): Error?
+    fun findById(id: String): Flow<Business>
+    suspend fun save(business: List<Business>): Error?
 }
