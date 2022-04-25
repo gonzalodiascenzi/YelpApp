@@ -11,6 +11,7 @@ import com.example.yelpapp.data.datasource.BusinessLocalDataSource
 import com.example.yelpapp.data.datasource.BusinessRemoteDataSource
 import com.example.yelpapp.data.server.BusinessServerDataSource
 import com.example.yelpapp.data.server.LocationDataSource
+import com.example.yelpapp.model.BusinessRoomDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -42,7 +43,7 @@ object AppModule {
 abstract class AppDataModule{
 
     @Binds
-    abstract fun bindLocalDataSource(localDataSource: BusinessRemoteDataSource) : BusinessLocalDataSource
+    abstract fun bindLocalDataSource(localDataSource: BusinessRoomDataSource) : BusinessLocalDataSource
 
     @Binds
     abstract fun bindRemoteDataSource(remoteDataSource: BusinessServerDataSource): BusinessRemoteDataSource

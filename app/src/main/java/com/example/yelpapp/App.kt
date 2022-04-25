@@ -4,17 +4,4 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class App: Application() /*{
-
-    lateinit var db: YelpDataBase
-        private set
-
-    override fun onCreate() {
-        super.onCreate()
-
-        db = Room.databaseBuilder(
-            this,
-            YelpDataBase::class.java, "yelp-db"
-        ).build()
-    }
-}*/
+class App: Application()

@@ -7,9 +7,10 @@ import com.example.yelpapp.data.database.model.toDomainModel
 import kotlinx.coroutines.flow.Flow
 import com.example.yelpapp.domain.Business
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
 
-class BusinessRoomDataSource(
+class BusinessRoomDataSource @Inject constructor(
     private val businessDao: BusinessDao
 ) {
 
