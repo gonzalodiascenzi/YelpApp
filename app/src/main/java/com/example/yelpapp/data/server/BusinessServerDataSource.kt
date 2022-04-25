@@ -1,4 +1,4 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data.server
 
 
 import com.example.yelpapp.data.database.BusinessDao
@@ -9,7 +9,7 @@ import com.example.yelpapp.domain.Business
 import kotlinx.coroutines.flow.map
 
 
-class LocalDataSource(
+class BusinessServerDataSource(
     private val businessDao: BusinessDao
 ) {
 

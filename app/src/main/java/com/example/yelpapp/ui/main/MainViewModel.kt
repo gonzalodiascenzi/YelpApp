@@ -3,14 +3,19 @@ package com.example.yelpapp.ui.main
 import androidx.lifecycle.*
 import com.example.yelpapp.data.repository.BusinessRepository
 import com.example.yelpapp.domain.Business
+import com.example.yelpapp.usecases.GetBusinessUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.*
+import javax.inject.Inject
 
-class MainViewModel(
-    private val businessRepository: BusinessRepository
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val businessRepository: BusinessRepository,
+    private val getBusinessUseCase: GetBusinessUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())
@@ -36,12 +41,4 @@ class MainViewModel(
         val loading: Boolean = false,
         val businesses: List<Business>? = null,
     )
-}
-
-@Suppress("UNCHECKED_CAST")
-class MainViewModelFactory(private val businessRepository: BusinessRepository) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return MainViewModel(businessRepository) as T
-    }
 }

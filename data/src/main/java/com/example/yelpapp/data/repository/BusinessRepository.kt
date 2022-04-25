@@ -1,33 +1,32 @@
 package com.example.yelpapp.data.repository
 
 
-import com.example.yelpapp.model.LocalDataSource
-import com.example.yelpapp.model.RemoteDataSource
+import com.example.yelpapp.data.datasource.BusinessLocalDataSource
+import com.example.yelpapp.data.datasource.BusinessRemoteDataSource
+import java.lang.Error
 import javax.inject.Inject
 
 class BusinessRepository @Inject constructor(
     private val regionRepository : RegionRepository,
-            private val localDataSource : LocalDataSource ,
-            private val remoteDataSource : RemoteDataSource
+    private val localDataSource : BusinessLocalDataSource,
+    private val remoteDataSource : BusinessRemoteDataSource
 ) {
 
     private val DEFAULT_LATITUDE = -31.417
     private val DEFAULT_LONGITUDE = -64.183
 
-  /*  private val regionRepository : RegionRepository = RegionRepository(app)
-    private val localDataSource : LocalDataSource = LocalDataSource(app.db.businessDao())
-    private val remoteDataSource : RemoteDataSource = RemoteDataSource(YelpDbClient.service)*/
+    val business get() = localDataSource.business
 
-    val business = localDataSource.business
-
-    suspend fun requestBusiness() {
+    suspend fun requestBusiness(): Error? {
         if(localDataSource.isEmpty()){
-            val location = regionRepository.findLastCoordinates()
+            /*val location = regionRepository.findLastLocation()
             val lat = location?.latitude ?: DEFAULT_LATITUDE
-            val long = location?.longitude ?: DEFAULT_LONGITUDE
-
-            val business = remoteDataSource.searchBusiness(lat.toString(),long.toString())
-            localDataSource.save(business)
+            val long = location?.longitude ?: DEFAULT_LONGITUDE*/
+            val business = remoteDataSource.searchBusiness(regionRepository.findLastLocation())
+            business.fold(ifLeft = { return it }){
+                localDataSource.save(it)
+            }
         }
+        return null
     }
 }

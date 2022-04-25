@@ -12,11 +12,13 @@ import com.example.yelpapp.R
 import com.example.yelpapp.databinding.FragmentDetailBinding
 import com.example.yelpapp.ui.common.launchAndCollect
 import com.example.yelpapp.ui.common.loadUrl
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val navArgs by navArgs<DetailFragmentArgs>()
-    private val viewModel by viewModels<DetailViewModel> { DetailViewModelFactory(navArgs.business) }
+    private val viewModel by viewModels<DetailViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

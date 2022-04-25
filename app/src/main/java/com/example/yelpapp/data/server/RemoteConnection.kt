@@ -1,4 +1,4 @@
-package com.example.yelpapp.data.datasource
+package com.example.yelpapp.data.server
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-object YelpDbClient {
+object RemoteConnection {
     private const val token = "R1R9DOL09jglEGD1X_uu0nwvLAd0JhiLujEZqFfa9YwJjroOHFI_PsHiUFUwkDrlyMq4PHmOouElxOCMgaOlhEa2Cymwl4k2LU09ytvNMomlwbd0sQCeuINLcMQWYnYx"
 
     private val tokenInterceptor = Interceptor { chain ->
@@ -33,5 +33,5 @@ object YelpDbClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service: YelpDbService = builder.create()
+    val service: RemoteService = builder.create()
 }

@@ -3,8 +3,10 @@ package com.example.yelpapp
 import android.app.Application
 import androidx.room.Room
 import com.example.yelpapp.data.database.YelpDataBase
+import dagger.hilt.android.HiltAndroidApp
 
-class App: Application() {
+@HiltAndroidApp
+class App: Application() /*{
 
     lateinit var db: YelpDataBase
         private set
@@ -17,4 +19,4 @@ class App: Application() {
             YelpDataBase::class.java, "yelp-db"
         ).build()
     }
-}
+}*/
