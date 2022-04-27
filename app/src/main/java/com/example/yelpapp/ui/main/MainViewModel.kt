@@ -14,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    //private val businessRepository: BusinessRepository,
     private val getBusinessUseCase: GetBusinessUseCase,
     private val requestBusinessUseCase: RequestBusinessUseCase
 ) : ViewModel() {
@@ -28,9 +27,6 @@ class MainViewModel @Inject constructor(
             getBusinessUseCase()
                 .catch { cause -> _state.update { it.copy(error = cause.toError()) } }
                 .collect{ bussiness -> _state.update { UiState(businesses = bussiness) }}
-          /*  businessRepository.business
-                .collect { businesses -> _state.value = UiState(businesses = businesses)
-                }*/
         }
     }
 
@@ -39,7 +35,6 @@ class MainViewModel @Inject constructor(
             _state.value = UiState(loading = true)
             val error = requestBusinessUseCase()
             _state.value = _state.value.copy(loading = false, error = error)
-            //businessRepository.requestBusiness()
         }
     }
 

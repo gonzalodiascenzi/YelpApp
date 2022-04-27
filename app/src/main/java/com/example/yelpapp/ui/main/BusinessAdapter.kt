@@ -30,15 +30,13 @@ class BusinessesAdapter (
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ViewBusinessItemBinding.bind(view)
         fun bind(business: Business)  = with(binding){
-            business.rating.let {
-                cover.loadUrl(business.image_url)
-                title.text = business.name
-                ratingBar.rating = business.rating.toFloat()
-                tvRating.text = business.rating.toString()
-                tvPhone.text = business.phone
-                tvAddress.text = business.address
-                tvCity.text = business.city
-            }
+            cover.loadUrl(business.image_url)
+            title.text = business.name
+            ratingBar.rating = business.rating.toFloat()
+            tvRating.text = business.rating.toString()
+            tvPhone.text = business.phone
+            tvAddress.text = business.address
+            tvCity.text = business.city
         }
     }
 }
