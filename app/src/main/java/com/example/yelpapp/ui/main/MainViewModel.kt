@@ -1,7 +1,6 @@
 package com.example.yelpapp.ui.main
 
 import androidx.lifecycle.*
-import com.example.yelpapp.data.repository.BusinessRepository
 import com.example.yelpapp.data.toError
 import com.example.yelpapp.domain.Business
 import com.example.yelpapp.domain.Error
@@ -15,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getBusinessUseCase: GetBusinessUseCase,
-    private val requestBusinessUseCase: RequestBusinessUseCase
+    private val requestBusinessUseCase: RequestBusinessUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(UiState())

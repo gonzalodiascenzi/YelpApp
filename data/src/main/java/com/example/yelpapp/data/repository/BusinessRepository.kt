@@ -3,7 +3,9 @@ package com.example.yelpapp.data.repository
 
 import com.example.yelpapp.data.datasource.BusinessLocalDataSource
 import com.example.yelpapp.data.datasource.BusinessRemoteDataSource
+import com.example.yelpapp.domain.Business
 import com.example.yelpapp.domain.Error
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class BusinessRepository @Inject constructor(
@@ -11,8 +13,17 @@ class BusinessRepository @Inject constructor(
     private val localDataSource : BusinessLocalDataSource,
     private val remoteDataSource : BusinessRemoteDataSource
 ) {
-
+    var idBusiness : String =""
     val business get() = localDataSource.business
+    val businessById get() = localDataSource.findById(idBusiness)
+
+    suspend fun getBusinessById(id: String): Flow<Business>? {
+        if (!localDataSource.isEmpty()){
+            idBusiness = id
+            return businessById
+        }
+        return null
+    }
 
     suspend fun requestBusiness(): Error? {
         if(localDataSource.isEmpty()){

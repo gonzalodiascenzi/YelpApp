@@ -27,6 +27,8 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         binding.toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
+        viewModel.onUiReady(navArgs.business)
+
         launchAndCollect(viewModel.state) { binding.updateUI(it) }
     }
 
