@@ -7,15 +7,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.FragmentMainBinding
-import com.example.yelpapp.model.BusinessRepository
+import com.example.yelpapp.data.repository.BusinessRepository
 import com.example.yelpapp.ui.common.app
 import com.example.yelpapp.ui.common.launchAndCollect
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
 
-    private val viewModel: MainViewModel by viewModels { MainViewModelFactory(BusinessRepository(requireActivity().app)) }
+    private val viewModel: MainViewModel by viewModels()
 
-    private val adapter = BusinessesAdapter { mainState.onBusinessClicked(it)}
+    private val adapter = BusinessesAdapter { mainState.onBusinessClicked(it) }
 
     private lateinit var mainState: MainState
 
@@ -37,7 +39,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun FragmentMainBinding.updateUI(state: MainViewModel.UiState) {
         progress.isVisible = state.loading
         state.businesses?.let(adapter::submitList)
-
     }
 
 

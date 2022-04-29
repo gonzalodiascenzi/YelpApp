@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import com.example.yelpapp.App
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = true): View =
@@ -24,7 +23,7 @@ fun ImageView.loadUrl(url: String) {
     Glide.with(context).load(url).into(this)
 }
 
-inline fun <T> basicDiffUtil(
+inline fun <T : Any> basicDiffUtil(
     crossinline areItemsTheSame: (T, T) -> Boolean = { old, new -> old == new },
     crossinline areContentsTheSame: (T, T) -> Boolean = { old, new -> old == new }
 ) = object : DiffUtil.ItemCallback<T>() {

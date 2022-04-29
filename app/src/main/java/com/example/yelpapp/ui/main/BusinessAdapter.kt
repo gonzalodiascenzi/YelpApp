@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.yelpapp.R
 import com.example.yelpapp.databinding.ViewBusinessItemBinding
 import com.example.yelpapp.domain.Business
+
 import com.example.yelpapp.ui.common.basicDiffUtil
 import com.example.yelpapp.ui.common.inflate
 import com.example.yelpapp.ui.common.loadUrl

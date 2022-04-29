@@ -15,7 +15,7 @@ fun Fragment.buildMainState(
     navController: NavController = findNavController(),
     locationPermissionRequester: PermissionRequester = PermissionRequester(
         this,
-        Manifest.permission.ACCESS_COARSE_LOCATION
+            Manifest.permission.ACCESS_COARSE_LOCATION
     )
 ) = MainState(scope, navController, locationPermissionRequester)
 
