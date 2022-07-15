@@ -2,6 +2,7 @@ package com.example.yelpapp.ui.main
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yelpapp.R
@@ -29,6 +30,7 @@ class BusinessesAdapter (
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ViewBusinessItemBinding.bind(view)
+
         fun bind(business: Business)  = with(binding){
             cover.loadUrl(business.image_url)
             title.text = business.name
@@ -37,6 +39,7 @@ class BusinessesAdapter (
             tvPhone.text = business.phone
             tvAddress.text = business.address
             tvCity.text = business.city
+            favorite.isVisible = business.favorite
         }
     }
 }

@@ -1,9 +1,5 @@
 package com.example.yelpapp.domain
 
-import kotlinx.parcelize.Parcelize
-import java.io.Serializable
-
-@Parcelize
 data class Business(
     val alias: String,
     val display_phone: String,
@@ -12,12 +8,13 @@ data class Business(
     val image_url: String,
     val is_closed: Boolean,
     val address: String,
-    val city : String,
+    val city : String?,
+    val country : String?,
     val name: String,
     val phone: String,
-    val price: String,
+    val price: String?,
     val rating: Double,
     val review_count: Int,
-    val transactions: List<String>,
-    val url: String
-) : Serializable
+    val url: String,
+    val favorite : Boolean
+)

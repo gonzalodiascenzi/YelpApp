@@ -13,17 +13,9 @@ class BusinessRepository @Inject constructor(
     private val localDataSource : BusinessLocalDataSource,
     private val remoteDataSource : BusinessRemoteDataSource
 ) {
-    var idBusiness : String =""
     val business get() = localDataSource.business
-    val businessById get() = localDataSource.findById(idBusiness)
 
-    suspend fun getBusinessById(id: String): Flow<Business>? {
-        if (!localDataSource.isEmpty()){
-            idBusiness = id
-            return businessById
-        }
-        return null
-    }
+    fun getBusinessById(id: String): Flow<Business> = localDataSource.findById(id)
 
     suspend fun requestBusiness(): Error? {
         if(localDataSource.isEmpty()){
@@ -33,5 +25,10 @@ class BusinessRepository @Inject constructor(
             }
         }
         return null
+    }
+
+    suspend fun switchFavorite(business: Business): Error? {
+        val updatedBusiness = business.copy(favorite = !business.favorite)
+        return localDataSource.save(listOf(updatedBusiness))
     }
 }

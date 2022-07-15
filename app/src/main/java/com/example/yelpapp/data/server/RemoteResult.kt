@@ -1,10 +1,8 @@
 package com.example.yelpapp.data.server
 
-import com.example.yelpapp.data.entity.RemoteBusiness
-import com.example.yelpapp.data.entity.Region
+import com.example.yelpapp.data.server.model.RemoteBusiness
 
 data class RemoteResult(
     val businesses: List<RemoteBusiness>,
-    val region: Region,
     val total: Int
 )

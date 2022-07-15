@@ -2,9 +2,7 @@ package com.example.yelpapp.data
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.location.Geocoder
-import android.location.Location
-import com.example.yelpapp.data.server.LocationDataSource
+import com.example.yelpapp.data.datasource.LocationDataSource
 import com.example.yelpapp.domain.Coordinates
 
 import com.google.android.gms.location.LocationServices
@@ -12,8 +10,9 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import javax.inject.Inject
 import kotlin.coroutines.resume
 
-class PlayServicesLocationDataSource @Inject constructor(application: Application) :
-    LocationDataSource {
+class PlayServicesLocationDataSource @Inject constructor(
+    application: Application
+) : LocationDataSource {
     private val fusedLocationClient = LocationServices.getFusedLocationProviderClient(application)
 
     @SuppressLint("MissingPermission")
@@ -24,5 +23,4 @@ class PlayServicesLocationDataSource @Inject constructor(application: Applicatio
                     continuation.resume(it.result?.let { Coordinates(it.latitude, it.longitude) })
                 }
         }
-
 }

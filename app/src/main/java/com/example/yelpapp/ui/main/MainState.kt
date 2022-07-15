@@ -26,7 +26,7 @@ class MainState(
 ) {
 
     fun onBusinessClicked(business: Business) {
-        val action = MainFragmentDirections.actionMainToDetail(business)
+        val action = MainFragmentDirections.actionMainToDetail(business.id)
         navController.navigate(action)
     }
 

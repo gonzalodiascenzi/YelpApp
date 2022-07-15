@@ -3,10 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.jvm'
 }
 
-dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-parcelize-runtime:1.6.10'
-}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
