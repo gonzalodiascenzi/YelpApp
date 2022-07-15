@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetBusinessByIdUseCase @Inject constructor(
     private val businessRepository: BusinessRepository
 ){
-    suspend operator fun invoke(id : String) = businessRepository.getBusinessById(id)
+    operator fun invoke(id : String) = businessRepository.getBusinessById(id)
 }
