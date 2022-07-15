@@ -1,7 +1,6 @@
-package com.example.yelpapp.model
+package com.example.yelpapp.data.database
 
 
-import com.example.yelpapp.data.database.BusinessDao
 import com.example.yelpapp.data.database.model.fromDomainModel
 import com.example.yelpapp.data.database.model.toDomainModel
 import com.example.yelpapp.data.datasource.BusinessLocalDataSource

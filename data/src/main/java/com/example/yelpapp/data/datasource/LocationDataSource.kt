@@ -1,4 +1,4 @@
-package com.example.yelpapp.data.server
+package com.example.yelpapp.data.datasource
 
 import com.example.yelpapp.domain.Coordinates
 

@@ -23,7 +23,7 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
-            android:name="business"
-            app:argType="com.example.yelpapp.domain.Business" />
+            android:name="id"
+            app:argType="string" />
     </fragment>
 </navigation>
