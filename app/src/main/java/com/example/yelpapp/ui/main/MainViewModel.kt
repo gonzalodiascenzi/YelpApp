@@ -20,7 +20,6 @@ class MainViewModel @Inject constructor(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-
     init {
         viewModelScope.launch {
             getBusinessUseCase()
@@ -31,7 +30,7 @@ class MainViewModel @Inject constructor(
 
     fun onUiReady(){
         viewModelScope.launch {
-            _state.value = UiState(loading = true)
+            _state.value = _state.value.copy(loading = true)
             val error = requestBusinessUseCase()
             _state.value = _state.value.copy(loading = false, error = error)
         }
