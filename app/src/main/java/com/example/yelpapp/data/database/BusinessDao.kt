@@ -18,7 +18,4 @@ interface BusinessDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBusiness(business: List<Business>)
-
-    @Update
-    fun updateBusiness(business: Business)
 }

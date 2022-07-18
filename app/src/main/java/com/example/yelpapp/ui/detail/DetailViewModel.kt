@@ -26,7 +26,6 @@ class DetailViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             getBusinessByIdUseCase(id)
-                .onStart { _state.update { UiState(loading = true) } }
                 .catch { cause -> _state.update { _state.value.copy(error = cause.toError()) } }
                 .collect { business -> _state.update { UiState(business = business) } }
         }
