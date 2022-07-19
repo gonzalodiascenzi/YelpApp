@@ -66,14 +66,15 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(
+    fun provideService(
         @ApiUrl url: String,
         okHttpClient: OkHttpClient
-    ): Retrofit = Retrofit.Builder()
+    ) : RemoteService = Retrofit.Builder()
         .baseUrl(url)
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+        .create()
 
     @Provides
     @Singleton
@@ -84,9 +85,5 @@ object AppModule {
     @Singleton
     @Token
     fun provideToken() = "R1R9DOL09jglEGD1X_uu0nwvLAd0JhiLujEZqFfa9YwJjroOHFI_PsHiUFUwkDrlyMq4PHmOouElxOCMgaOlhEa2Cymwl4k2LU09ytvNMomlwbd0sQCeuINLcMQWYnYx"
-
-    @Provides
-    @Singleton
-    fun provideService(retrofit: Retrofit) : RemoteService = retrofit.create()
 
 }
